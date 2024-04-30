@@ -1,0 +1,4 @@
+re
+*.o
+y.output
+y.tab.c

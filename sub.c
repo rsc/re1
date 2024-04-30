@@ -31,6 +31,8 @@ incref(Sub *s)
 Sub*
 update(Sub *s, int i, char *p)
 {
+	if(i >= s->nsub)
+		return s;
 	Sub *s1;
 	int j;
 

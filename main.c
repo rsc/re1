@@ -8,11 +8,11 @@ struct {
 	char *name;
 	int (*fn)(Prog*, char*, char**, int);
 } tab[] = {
-	"recursive", recursiveprog,
-	"recursiveloop", recursiveloopprog,
-	"backtrack", backtrack,
-	"thompson", thompsonvm,
-	"pike", pikevm,
+	{"recursive", recursiveprog},
+	{"recursiveloop", recursiveloopprog},
+	{"backtrack", backtrack},
+	{"thompson", thompsonvm},
+	{"pike", pikevm},
 };
 
 void
@@ -35,13 +35,13 @@ main(int argc, char **argv)
 	
 	re = parse(argv[1]);
 	printre(re);
-	printf("\n");
+	printf("\n\n");
 
 	prog = compile(re);
 	printprog(prog);
 
 	for(i=2; i<argc; i++) {
-		printf("#%d %s\n", i, argv[i]);
+		printf("\n#%d %s\n", i-2, argv[i]);
 		for(j=0; j<nelem(tab); j++) {
 			printf("%s ", tab[j].name);
 			memset(sub, 0, sizeof sub);
